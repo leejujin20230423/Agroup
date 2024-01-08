@@ -4,7 +4,6 @@ session_start(); // 세션 시작
 
 if (
     isset($_SESSION["loggedin"])
-
     && $_SESSION["loggedin"] == true
 ) {
 
@@ -15,7 +14,7 @@ if (
 
 
 // db를 연결해는 명령어
-$con = mysqli_connect("49.247.37.19", "lokia", "lokia0528**", "Agroup") or die("mysql 접속실패 !!");
+require_once 'dbconfig.php';
 
 
 // print_r($_GET["UserId"].$_GET["UserPassword"]);
