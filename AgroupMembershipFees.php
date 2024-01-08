@@ -121,8 +121,7 @@ if (
 
     $info = mysqli_fetch_assoc($info_result);  //그 컬럼이 몇개 있어 중에 한건을 뽑아내는 곳
 
-}
-;
+};
 
 // 두번째 업데이트 치기
 if (
@@ -159,89 +158,80 @@ require_once 'template/header.php';
 ?>
 
 
-        <!-- Main center -->
-        <main class="flex p-4 w-11/12 h-full">
-            <div class="w-4/12 h-full">
-                <form method="get" action="AgroupMembershipFees.php">
-                    회비항목번호 : <input readonly class="border" type="text" name="AgroupMembershipFeesNumber"
-                        value="<?php echo $info['AgroupMembershipFeesNumber'] ?>"><br>
+<!-- Main center -->
 
-                    회비항목등록일자 : <input required class="border" type="date" name="AgroupMembershipFeesRegistrationDate"
-                        value="<?php echo date('Y-m-d', strtotime($info['AgroupMembershipFeesRegistrationDate'])) ?>"><br>
+<div class="h-full">
+    <form method="get" action="AgroupMembershipFees.php">
+        회비항목번호 : <input readonly class="border" type="text" name="AgroupMembershipFeesNumber" value="<?php echo $info['AgroupMembershipFeesNumber'] ?>"><br>
 
-                    회비항목년월 : <input required class="border" type="text" name="AgroupMembershipFeesYM"
-                        value="<?php echo $info['AgroupMembershipFeesYM'] ?>"><br>
+        회비항목등록일자 : <input required class="border" type="date" name="AgroupMembershipFeesRegistrationDate" value="<?php echo date('Y-m-d', strtotime($info['AgroupMembershipFeesRegistrationDate'])) ?>"><br>
 
-                    회비항목금액 : <input required class="border" type="int" name="AgroupMembershipFeesAmount"
-                        value="<?php echo $info['AgroupMembershipFeesAmount'] ?>"><br>
+        회비항목년월 : <input required class="border" type="text" name="AgroupMembershipFeesYM" value="<?php echo $info['AgroupMembershipFeesYM'] ?>"><br>
 
-                    회비항목내용 : <input class="border" type="text" name="AgroupMembershipFeesRemarks"
-                        value="<?php echo $info['AgroupMembershipFeesRemarks'] ?>"><br>
+        회비항목금액 : <input required class="border" type="int" name="AgroupMembershipFeesAmount" value="<?php echo $info['AgroupMembershipFeesAmount'] ?>"><br>
 
-                    <br><br>
+        회비항목내용 : <input class="border" type="text" name="AgroupMembershipFeesRemarks" value="<?php echo $info['AgroupMembershipFeesRemarks'] ?>"><br>
+
+        <br><br>
 
 
 
-                    <!-- 회비 항목 등록 버튼 -->
-                    <?php
-                    if (
-                        !isset($_GET['mode'])
-                    ) {
-                        ?>
-                        <input type="hidden" name="action" value="insert">
-                        <input
-                            class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition"
-                            type="submit" value="항목 등록">
-                        <?php
-                    }
-                    ?>
+        <!-- 회비 항목 등록 버튼 -->
+        <?php
+        if (
+            !isset($_GET['mode'])
+        ) {
+        ?>
+            <input type="hidden" name="action" value="insert">
+            <input class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition" type="submit" value="항목 등록">
+        <?php
+        }
+        ?>
 
-                    <!-- 수정하기 버튼 -->
-                    <?php
-                    if (
-                        isset($_GET['mode'])
-                        && ($_GET['mode'] == 'modify')
-                    ) {
-                        ?>
-                        <input type="hidden" name="action" value="update"> <!-- hidden으로 하면 사용자에게 버튼이 보이지 않도록 설정하는 것임-->
+        <!-- 수정하기 버튼 -->
+        <?php
+        if (
+            isset($_GET['mode'])
+            && ($_GET['mode'] == 'modify')
+        ) {
+        ?>
+            <input type="hidden" name="action" value="update"> <!-- hidden으로 하면 사용자에게 버튼이 보이지 않도록 설정하는 것임-->
 
-                        <input
-                            class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition"
-                            type="submit" value="수정 하기">
-                        <?php
-                    }
-                    ?>
+            <input class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition" type="submit" value="수정 하기">
+        <?php
+        }
+        ?>
 
-                </form>
+    </form>
+</div>
+
+<div class="h-full">
+    <!-- Main Content 2 -->
+    <aside class="bg-gray-150 p-4 h-full">
+        <!-- <h2 class="text-lg font-semibold">Main Content 2</h2>
+        <p>This is the main content on the right side.</p> -->
+        <form action="" method="get">
+            <h1> 회비 항목 내역 </h1>
+            <div>
+                <input class="border" type="text" name="AgroupMembershipFeesRemarks" id="">
+                <button type="submit">검색</button>
             </div>
+            <table border=1>
+                <tr>
+                    <th>회비항목코드</th>
+                    <th>회비항목등록일자</th>
+                    <th>회비항목년월</th>
+                    <th>회비항목금액</th>
+                    <th>회비항목내용</th>
+                    <th>회비항목수정</th>
 
-            <div class="w-8/12 h-full">
-                <!-- Main Content 2 -->
-                <aside class="bg-gray-150 p-4 w-9/12 h-full">
-                    <h2 class="text-lg font-semibold">Main Content 2</h2>
-                    <p>This is the main content on the right side.</p>
-                    <form action="" method="get">
-                        <h1> 회비 항목 내역 </h1>
-                        <div>
-                            <input class="border" type="text" name="AgroupMembershipFeesRemarks" id="">
-                            <button type="submit">검색</button>
-                        </div>
-                        <table border=1>
-                            <tr>
-                                <th>회비항목코드</th>
-                                <th>회비항목등록일자</th>
-                                <th>회비항목년월</th>
-                                <th>회비항목금액</th>
-                                <th>회비항목내용</th>
-                                <th>회비항목수정</th>
-
-                            </tr>
-                            <?php
-                            while ($row = mysqli_fetch_array($AgroupMembershipFees_List_result)) {
-                                echo "<tr>                    
+                </tr>
+                <?php
+                while ($row = mysqli_fetch_array($AgroupMembershipFees_List_result)) {
+                    echo "<tr>                    
                             
                               <td>{$row['AgroupMembershipFeesNumber']}</td>                         
-                              <td>".date('Y-m-d',strtotime($row['AgroupMembershipFeesRegistrationDate']))."</td>
+                              <td>" . date('Y-m-d', strtotime($row['AgroupMembershipFeesRegistrationDate'])) . "</td>
                               <td>{$row['AgroupMembershipFeesYM']}</td>
                               <td>{$row['AgroupMembershipFeesAmount']}</td>
                               <td>{$row['AgroupMembershipFeesRemarks']}</td>
@@ -250,23 +240,16 @@ require_once 'template/header.php';
                                  <a href='/AgroupMembershipFees.php?AgroupMembershipFeesNumber={$row['AgroupMembershipFeesNumber']}&mode=delete' >삭제</a>
                               </td>                             
                               </tr>";
-
-                            }
-                            ?>
-                        </table>
-                    </form>
-                </aside>
-
-
-
-            </div>
+                }
+                ?>
+            </table>
+        </form>
+    </aside>
 
 
 
-        </main>
+</div>
 
-    </div>
 
-</body>
 
-</html>
+<?php require_once 'template/footer.php'; ?>

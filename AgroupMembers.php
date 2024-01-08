@@ -124,8 +124,7 @@ if (
 
     $info = mysqli_fetch_assoc($info_result);  //그 컬럼이 몇개 있어 중에 한건을 뽑아내는 곳
 
-}
-;
+};
 
 // 두번째 업데이트 치기
 if (
@@ -162,81 +161,72 @@ require_once 'template/header.php';
 
 
 
-        <!-- Main center -->
-        <main class="flex p-4 w-11/12 h-full">
-            <div class="w-4/12 h-full">
-                <form method="get" action="AgroupMembers.php">
-                    회원번호 : <input readonly class="border" type="text" name="AgroupMembersNumber"
-                        value="<?php echo $info['AgroupMembersNumber'] ?>"><br>
-                    <!--disabled는 input 박스를 사용하지 못하도록 클릭을 방지한다.readonly는 클릭은 되어도 값이 변경되지 않도록 한다. -->
-                    회원등록일자 : <input required class="border" type="date" name="AgroupMembersRegistrationDate"
-                        value="<?php echo date('Y-m-d', strtotime($info['AgroupMembersRegistrationDate'])) ?>"><br>
+<!-- Main center -->
 
-                    회원성명 : <input required class="border" type="text" name="AgroupMembersName"
-                        value="<?php echo $info['AgroupMembersName'] ?>"><br>
+<div class="h-full">
+    <form method="get" action="AgroupMembers.php">
+        회원번호 : <input readonly class="border" type="text" name="AgroupMembersNumber" value="<?php echo $info['AgroupMembersNumber'] ?>"><br>
+        <!--disabled는 input 박스를 사용하지 못하도록 클릭을 방지한다.readonly는 클릭은 되어도 값이 변경되지 않도록 한다. -->
+        회원등록일자 : <input required class="border" type="date" name="AgroupMembersRegistrationDate" value="<?php echo date('Y-m-d', strtotime($info['AgroupMembersRegistrationDate'])) ?>"><br>
 
-                    회원연락처 : <input required class="border" type="text" name="AgroupMembersWorkPhone"
-                        value="<?php echo $info['AgroupMembersWorkPhone'] ?>"><br>
+        회원성명 : <input required class="border" type="text" name="AgroupMembersName" value="<?php echo $info['AgroupMembersName'] ?>"><br>
 
-                    비고 : <input class="border" type="text" name="AgroupMembersRemarks"
-                        value="<?php echo $info['AgroupMembersRemarks'] ?>"><br>
-                    <br><br>
+        회원연락처 : <input required class="border" type="text" name="AgroupMembersWorkPhone" value="<?php echo $info['AgroupMembersWorkPhone'] ?>"><br>
 
-                    <!-- 회원등록 버튼 -->
-                    <?php
-                    if (
-                        !isset($_GET['mode'])
-                    ) {
-                        ?>
-                        <input type="hidden" name="action" value="insert">
-                        <input
-                            class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition"
-                            type="submit" value="회원 등록">
-                        <?php
-                    }
-                    ?>
+        비고 : <input class="border" type="text" name="AgroupMembersRemarks" value="<?php echo $info['AgroupMembersRemarks'] ?>"><br>
+        <br><br>
 
-                    <!-- 수정하기 버튼 -->
-                    <?php
-                    if (
-                        isset($_GET['mode'])
-                        && ($_GET['mode'] == 'modify')
-                    ) {
-                        ?>
-                        <input type="hidden" name="action" value="update"> <!-- hidden으로 하면 사용자에게 버튼이 보이지 않도록 설정하는 것임-->
+        <!-- 회원등록 버튼 -->
+        <?php
+        if (
+            !isset($_GET['mode'])
+        ) {
+        ?>
+            <input type="hidden" name="action" value="insert">
+            <input class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition" type="submit" value="회원 등록">
+        <?php
+        }
+        ?>
 
-                        <input
-                            class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition"
-                            type="submit" value="수정 하기">
-                        <?php
-                    }
-                    ?>
-                </form>
+        <!-- 수정하기 버튼 -->
+        <?php
+        if (
+            isset($_GET['mode'])
+            && ($_GET['mode'] == 'modify')
+        ) {
+        ?>
+            <input type="hidden" name="action" value="update"> <!-- hidden으로 하면 사용자에게 버튼이 보이지 않도록 설정하는 것임-->
+
+            <input class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition" type="submit" value="수정 하기">
+        <?php
+        }
+        ?>
+    </form>
+</div>
+
+<div class="h-full">
+    <!-- Main Content 2 -->
+    <aside class="bg-gray-150 p-4 h-full">
+        <!-- <h2 class="text-lg font-semibold">Main Content 2</h2>
+        <p>This is the main content on the right side.</p> -->
+        <form action="" method="get">
+            <h1> 회비 항목 내역 </h1>
+            <div>
+                <input class="border" type="text" name="AgroupMembersName" id="">
+                <button type="submit">회원검색</button>
             </div>
-
-            <div class="w-8/12 h-full">
-                <!-- Main Content 2 -->
-                <aside class="bg-gray-150 p-4 w-9/12 h-full">
-                    <h2 class="text-lg font-semibold">Main Content 2</h2>
-                    <p>This is the main content on the right side.</p>
-                    <form action="" method="get">
-                        <h1> 회비 항목 내역 </h1>
-                        <div>
-                            <input class="border" type="text" name="AgroupMembersName" id="">
-                            <button type="submit">회원검색</button>
-                        </div>
-                        <table border=1>
-                            <tr class="border">
-                                <th>회원코드</th>
-                                <th>회원등록일자</th>
-                                <th>회원성명</th>
-                                <th>회원연락처</th>
-                                <th>비고</th>
-                                <th>회원수정</th>
-                            </tr>
-                            <?php
-                            while ($row = mysqli_fetch_array($AgroupMembers_List_result)) { //위 mysqli_query에서 가져온 쿼리의 결과값을 한행씩 뽑아 내서 배열로 담는 기능의 함수
-                                echo "<tr>
+            <table border=1>
+                <tr class="border">
+                    <th>회원코드</th>
+                    <th>회원등록일자</th>
+                    <th>회원성명</th>
+                    <th>회원연락처</th>
+                    <th>비고</th>
+                    <th>회원수정</th>
+                </tr>
+                <?php
+                while ($row = mysqli_fetch_array($AgroupMembers_List_result)) { //위 mysqli_query에서 가져온 쿼리의 결과값을 한행씩 뽑아 내서 배열로 담는 기능의 함수
+                    echo "<tr>
                                         <td>{$row['AgroupMembersNumber']}</td>
                                         <td>{$row['AgroupMembersRegistrationDate']}</td>
                                         <td>{$row['AgroupMembersName']}</td>
@@ -247,14 +237,10 @@ require_once 'template/header.php';
                                             <a href='/AgroupMembers.php?AgroupMembersNumber={$row['AgroupMembersNumber']}&mode=delete' >삭제</a>
                                         </td>
                                      </tr>";
-                            }
-                            ?>
-                        </table>
-                    </form>
-                </aside>
-            </div>
-        </main>
-    </div>
-</body>
-
-</html>
+                }
+                ?>
+            </table>
+        </form>
+    </aside>
+</div>
+<?php require_once 'template/footer.php'; ?>

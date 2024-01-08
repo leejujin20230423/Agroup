@@ -131,8 +131,7 @@ if (
 
     $info = mysqli_fetch_assoc($info_result);  //그 컬럼이 몇개 있어 중에 한건을 뽑아내는 곳
 
-}
-;
+};
 
 
 
@@ -175,86 +174,75 @@ if (
 require_once 'template/header.php';
 ?>
 
-        <!-- Main center -->
-        <main class="flex p-4 w-11/12 h-full">
-            <div class="w-4/12 h-full">
-                <form method="get" action="AgroupExpenses.php">
-                    회비지출번호 : <input class="border" type="text" name="AgroupExpensesNumber"
-                        value="<?php echo $info['AgroupExpensesNumber'] ?>"><br>
-                    회비지출등록일자 : <input required class="border" type="date" name="AgroupExpensesRegistrationDate"
-                        value="<?php echo date('Y-m-d', strtotime($info['AgroupExpensesRegistrationDate'])) ?>"><br>
-                    회비지출일자 : <input required class="border" type="date" name="AgroupExpensesDate"
-                        value="<?php echo date('Y-m-d', strtotime($info['AgroupExpensesDate'])) ?>"><br>
-                    회비지출년월 : <input required class="border" type="text" name="AgroupExpensesYM"
-                        value="<?php echo $info['AgroupExpensesYM'] ?>"><br>
-                    회비지출액 : <input class="border" type="text" name="AgroupExpensesAmount"
-                        value="<?php echo $info['AgroupExpensesAmount'] ?>"><br>
-                    회비지출자명 : <input class="border" type="text" name="AgroupExpensesName"
-                        value="<?php echo $info['AgroupExpensesName'] ?>"><br>
-                    회비지출계좌번호 : <input class="border" type="text" name="AgroupExpensesAccountNumber"
-                        value="<?php echo $info['AgroupExpensesAccountNumber'] ?>"><br>
-                    비고 : <input class="border" type="text" name="AgroupExpensesRemarks"><br>
-                    <br><br>
+<!-- Main center -->
+
+<div class="h-full">
+    <form method="get" action="AgroupExpenses.php">
+        회비지출번호 : <input class="border" type="text" name="AgroupExpensesNumber" value="<?php echo $info['AgroupExpensesNumber'] ?>"><br>
+        회비지출등록일자 : <input required class="border" type="date" name="AgroupExpensesRegistrationDate" value="<?php echo date('Y-m-d', strtotime($info['AgroupExpensesRegistrationDate'])) ?>"><br>
+        회비지출일자 : <input required class="border" type="date" name="AgroupExpensesDate" value="<?php echo date('Y-m-d', strtotime($info['AgroupExpensesDate'])) ?>"><br>
+        회비지출년월 : <input required class="border" type="text" name="AgroupExpensesYM" value="<?php echo $info['AgroupExpensesYM'] ?>"><br>
+        회비지출액 : <input class="border" type="text" name="AgroupExpensesAmount" value="<?php echo $info['AgroupExpensesAmount'] ?>"><br>
+        회비지출자명 : <input class="border" type="text" name="AgroupExpensesName" value="<?php echo $info['AgroupExpensesName'] ?>"><br>
+        회비지출계좌번호 : <input class="border" type="text" name="AgroupExpensesAccountNumber" value="<?php echo $info['AgroupExpensesAccountNumber'] ?>"><br>
+        비고 : <input class="border" type="text" name="AgroupExpensesRemarks"><br>
+        <br><br>
 
 
-                    <!-- 지출입력 버튼 -->
+        <!-- 지출입력 버튼 -->
 
-                    <?php
-                    if (
-                        !isset($_GET['mode'])
-                    ) {
-                        ?>
-                        <input type="hidden" name="action" value="insert">
-                        <input
-                            class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition"
-                            type="submit" value="지출 등록">
-                        <?php
-                    }
-                    ?>
+        <?php
+        if (
+            !isset($_GET['mode'])
+        ) {
+        ?>
+            <input type="hidden" name="action" value="insert">
+            <input class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition" type="submit" value="지출 등록">
+        <?php
+        }
+        ?>
 
-                    <!-- 수정하기 버튼 -->
-                    <?php
-                    if (
-                        isset($_GET['mode'])
-                        && ($_GET['mode'] == 'modify')
-                    ) {
-                        ?>
-                        <input type="hidden" name="action" value="update"> <!-- hidden으로 하면 사용자에게 버튼이 보이지 않도록 설정하는 것임-->
+        <!-- 수정하기 버튼 -->
+        <?php
+        if (
+            isset($_GET['mode'])
+            && ($_GET['mode'] == 'modify')
+        ) {
+        ?>
+            <input type="hidden" name="action" value="update"> <!-- hidden으로 하면 사용자에게 버튼이 보이지 않도록 설정하는 것임-->
 
-                        <input
-                            class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition"
-                            type="submit" value="수정 하기">
-                        <?php
-                    }
-                    ?>
-                </form>
+            <input class="mt-4 p-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 transition" type="submit" value="수정 하기">
+        <?php
+        }
+        ?>
+    </form>
+</div>
+
+<div class="8/12 h-full">
+    <!-- Main Content 2 -->
+    <aside class="bg-gray-150 p-4 h-full">
+        <!-- <h2 class="text-lg font-semibold">Main Content 2</h2>
+        <p>This is the main content on the right side.</p> -->
+        <form action="" method="get">
+            <h1> 회비 지출 내역 </h1>
+            <div>
+                <input class="border" type="text" name="AgroupExpensesName" id="">
+                <button type="submit">검색</button>
             </div>
-
-            <div class="w-8/12 h-full">
-                <!-- Main Content 2 -->
-                <aside class="bg-gray-150 p-4 w-9/12 h-full">
-                    <h2 class="text-lg font-semibold">Main Content 2</h2>
-                    <p>This is the main content on the right side.</p>
-                    <form action="" method="get">
-                        <h1> 회비 지출 내역 </h1>
-                        <div>
-                            <input class="border" type="text" name="AgroupExpensesName" id="">
-                            <button type="submit">검색</button>
-                        </div>
-                        <table border=1>
-                            <tr>
-                                <th>회비지출번호</th>
-                                <th>회비지출등록일자</th>
-                                <th>회비지출일자</th>
-                                <th>회비지출년월</th>
-                                <th>회비지출액</th>
-                                <th>회비지출자명</th>
-                                <th>회비지출계좌번호</th>
-                                <th>비고</th>
-                            </tr>
-                            <?php
-                            while ($row = mysqli_fetch_array($AgroupExpenses_List_ret)) {
-                                echo "<tr>                                                      
+            <table border=1>
+                <tr>
+                    <th>회비지출번호</th>
+                    <th>회비지출등록일자</th>
+                    <th>회비지출일자</th>
+                    <th>회비지출년월</th>
+                    <th>회비지출액</th>
+                    <th>회비지출자명</th>
+                    <th>회비지출계좌번호</th>
+                    <th>비고</th>
+                </tr>
+                <?php
+                while ($row = mysqli_fetch_array($AgroupExpenses_List_ret)) {
+                    echo "<tr>                                                      
                                        <td>{$row['AgroupExpensesNumber']}</td>
                                        <td>" . date('Y-m-d', strtotime($row['AgroupExpensesRegistrationDate'])) . "</td>
                                        <td>" . date('Y-m-d', strtotime($row['AgroupExpensesDate'])) . "</td>
@@ -274,22 +262,16 @@ require_once 'template/header.php';
                                         </div>
                                        </td>                             
                                      </tr>";
-                            }
-                            ?>
-                        </table>
-                    </form>
-                </aside>
+                }
+                ?>
+            </table>
+        </form>
+    </aside>
 
 
 
-            </div>
+</div>
 
 
 
-        </main>
-
-    </div>
-
-</body>
-
-</html>
+<?php require_once 'template/footer.php'; ?>
