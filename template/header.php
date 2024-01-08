@@ -16,7 +16,7 @@
         </form>
     </header>
     <!-- Wrap Content Area -->
-    <div class="grid grid-cols-[180px_1fr] h-full justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] h-full justify-center">
         <!-- Left Sidebar ##1-->
         <nav class="bg-gray-200 p-4 h-full">
             <h2 class="text-lg font-semibold hidden">Left Sidebar</h2>
@@ -29,4 +29,4 @@
                 <a href=''> (6) 회비현황 </a><br><br>
             </ul>
         </nav>
-        <main class="w-full grid grid-cols-[1fr_3fr] p-4">
+        <main class="w-full grid grid-cols-1 md:grid-cols-[1fr_3fr] p-4">

@@ -56,9 +56,6 @@ if (!empty($_GET["UserId"]) && !empty($_GET["UserPassword"])) {
 
 
 ?>
-
-
-
 <html lang="en">
 
 <head>
@@ -71,10 +68,9 @@ if (!empty($_GET["UserId"]) && !empty($_GET["UserPassword"])) {
 </head>
 
 <body>
-
     <!-- form은 작성된 웹 페이지에서 정보를 받을 거야 라는 의미를 가진다. action은 어느 페이지로 정보를 전송할 거야를 정해주는곳, 예를 들어 action="index.php"-->
     <form action="" method="get">
-        <section class="bg-gray-50 dark:bg-gray-900">
+        <section class="bg-gray-50 dark:bg-gray-900 h-screen">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
@@ -114,10 +110,8 @@ if (!empty($_GET["UserId"]) && !empty($_GET["UserPassword"])) {
                 </div>
             </div>
         </section>
-        
     </form>
 </body>
-
 </html>
 
 
