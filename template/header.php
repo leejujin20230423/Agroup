@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agroup</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../public/js/common.js"></script>
 </head>
 <body>
     <!-- Header -->
