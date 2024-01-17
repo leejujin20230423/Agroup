@@ -63,6 +63,8 @@ if (!empty($_GET["UserId"]) && !empty($_GET["UserPassword"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 테일윈드 적용 스크립트 -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="manifest" href="/manifest.json">
+    <script src="./public/js/common.js"></script>
 
     <title>Agroup</title>
 </head>
