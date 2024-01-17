@@ -3,7 +3,7 @@
     "name": "Agroup",
     "icons": [
       {
-        "src": "/public/images/new_icon.png",
+        "src": "/public/images/a_icon.png",
         "sizes": "192x192",
         "type": "image/png"
       }
