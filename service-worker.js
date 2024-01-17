@@ -3,7 +3,7 @@
 self.addEventListener('push', function (event) {
   const options = {
     body: event.data.text(),
-    icon: 'public/images/new_icon.png',
+    icon: '/public/images/new_icon.png',
   };
 
   event.waitUntil(
